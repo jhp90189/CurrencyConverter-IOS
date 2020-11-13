@@ -41,10 +41,18 @@ class CurrencyViewController: UIViewController {
         lblSelectedCurrency.layer.borderWidth = 2.0
         lblSelectedCurrency.layer.borderColor = UIColor.black.cgColor
         updateCurrencyUI()
+        // Tap gesture for drop down click
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dropDownClicked))
         tapGesture.numberOfTapsRequired = 1
         vwDropDown.addGestureRecognizer(tapGesture)
-        txtAmount.text = "1.00"
+        
+        //tap gesture to hide keyboard
+        let tapForKeyboard = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapForKeyboard)
+    }
+    
+    @objc func dismissKeyboard() {
+        txtAmount.resignFirstResponder()
     }
 
     @objc func dropDownClicked() {
@@ -81,7 +89,8 @@ extension CurrencyViewController: UICollectionViewDataSource, UICollectionViewDe
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "exchangecell", for: indexPath) as! ExchangeRateCell
         let exchangeObject = exchangeRates[indexPath.row]
-        let calculatedRate = String(format: "%.2f", (exchangeObject.rate / selectedExchangeRate))
+        let amount = Double(txtAmount.text ?? "1") ?? 1.0
+        let calculatedRate = String(format: "%.2f", amount * (exchangeObject.rate / selectedExchangeRate))
         cell.lblExchangeRateText.text = "\(calculatedRate) \(exchangeObject.currencyName)"
         cell.contentView.layer.borderWidth = 2
         cell.contentView.layer.borderColor = UIColor.darkGray.cgColor
@@ -94,6 +103,10 @@ extension CurrencyViewController: UITextFieldDelegate {
         if Int(textField.text ?? "0") ?? 0 <= 0 { textField.text = "1.00" }
         textField.resignFirstResponder()
         return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        collectionView.reloadData()
     }
 }
 
