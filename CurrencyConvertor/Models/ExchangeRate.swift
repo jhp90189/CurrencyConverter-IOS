@@ -1,13 +1,14 @@
 //
-//  CurrecyListCell.swift
+//  ExchangeRate.swift
 //  CurrencyConvertor
 //
 //  Created by Apple on 13/11/20.
 //  Copyright © 2020 Jainesh Patel. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
-class CurrecyListCell: UITableViewCell {
-    @IBOutlet weak var lblCurrency: UILabel!
+struct ExchangeRate {
+    var currencyName: String
+    var rate: Double
 }

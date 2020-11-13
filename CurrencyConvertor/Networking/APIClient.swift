@@ -37,7 +37,6 @@ final class APIClient {
         let request = URLRequest(resource)
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard let `data` = data else {
-                result(.failure(APIClientError.noData))
                 return
             }
             if let `error` = error {

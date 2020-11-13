@@ -126,6 +126,10 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="uze-en-lKL" id="4Oj-QK-Wuh"/>
+                                    <outlet property="delegate" destination="uze-en-lKL" id="ii8-pt-wMP"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -137,6 +141,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0C6-V3-fl1"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="sPF-5r-QUr" id="Ocv-Il-Y8X"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NuC-Wt-F91" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

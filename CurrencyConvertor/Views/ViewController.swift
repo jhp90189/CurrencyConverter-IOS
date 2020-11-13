@@ -16,7 +16,7 @@ class CurrencyViewController: UIViewController {
     @IBOutlet weak var lblSelectedCurrency: UILabel!
     
     private var viewModel = CurrencyViewModel()
-    private var selectedCurrency : Currency?
+    private var selectedCurrency = Currency(shortName: "USD", fullName: "United States Dollar")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +28,6 @@ class CurrencyViewController: UIViewController {
         self.title = "CurrencyConvertor"
         lblSelectedCurrency.layer.borderWidth = 2.0
         lblSelectedCurrency.layer.borderColor = UIColor.black.cgColor
-        lblSelectedCurrency.layer.cornerRadius = 3.0
 
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dropDownClicked))
         tapGesture.numberOfTapsRequired = 1
@@ -40,7 +39,7 @@ class CurrencyViewController: UIViewController {
     }
     
     private func updateCurrencyUI() {
-        lblSelectedCurrency.text = selectedCurrency?.shortName
+        lblSelectedCurrency.text = selectedCurrency.shortName
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -49,7 +48,7 @@ class CurrencyViewController: UIViewController {
             listViewController?.viewModel = viewModel
             listViewController?.selectedCurrency = selectedCurrency
             listViewController?.currencySelectionCallBack = { [weak self] currency in
-                self?.selectedCurrency = currency
+                self?.selectedCurrency = currency ?? Currency(shortName: "USD", fullName: "United States Dollar")
                 self?.updateCurrencyUI()
             }
         }

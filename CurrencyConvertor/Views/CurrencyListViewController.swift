@@ -10,6 +10,8 @@ import UIKit
 
 class CurrencyListViewController: UIViewController {
     
+    @IBOutlet weak var tableView: UITableView!
+    
     private var currencyList: [Currency] = []
     var selectedCurrency : Currency?
     var viewModel: CurrencyViewModel?
@@ -30,6 +32,7 @@ class CurrencyListViewController: UIViewController {
         viewModel?.callApiToFetchCurrencyList()
         viewModel?.bindCurrencyList = { [weak self] list in
             self?.currencyList = list
+            self?.tableView.reloadData()
         }
     }
 }
@@ -45,14 +48,15 @@ extension CurrencyListViewController: UITableViewDataSource, UITableViewDelegate
         cell.selectionStyle = .none
         let currency = currencyList[indexPath.row]
         cell.lblCurrency?.text = currency.shortName
-        cell.isSelected = (selectedCurrency?.shortName == currency.shortName)
+        cell.accessoryType = (selectedCurrency?.shortName == currency.shortName) ? UITableViewCell.AccessoryType.checkmark : UITableViewCell.AccessoryType.none
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
-        cell?.isSelected = true
+        cell?.accessoryType = .checkmark
         selectedCurrency = currencyList[indexPath.row]
         currencySelectionCallBack(selectedCurrency)
+        dismiss(animated: true, completion: nil)
     }
 }
