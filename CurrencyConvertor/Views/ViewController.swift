@@ -44,6 +44,7 @@ class CurrencyViewController: UIViewController {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dropDownClicked))
         tapGesture.numberOfTapsRequired = 1
         vwDropDown.addGestureRecognizer(tapGesture)
+        txtAmount.text = "1.00"
     }
 
     @objc func dropDownClicked() {
@@ -80,9 +81,19 @@ extension CurrencyViewController: UICollectionViewDataSource, UICollectionViewDe
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "exchangecell", for: indexPath) as! ExchangeRateCell
         let exchangeObject = exchangeRates[indexPath.row]
-        let calculatedRate = (exchangeObject.rate / selectedExchangeRate)
+        let calculatedRate = String(format: "%.2f", (exchangeObject.rate / selectedExchangeRate))
         cell.lblExchangeRateText.text = "\(calculatedRate) \(exchangeObject.currencyName)"
+        cell.contentView.layer.borderWidth = 2
+        cell.contentView.layer.borderColor = UIColor.darkGray.cgColor
         return cell
+    }
+}
+
+extension CurrencyViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if Int(textField.text ?? "0") ?? 0 <= 0 { textField.text = "1.00" }
+        textField.resignFirstResponder()
+        return true
     }
 }
 
