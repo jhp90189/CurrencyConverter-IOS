@@ -33,7 +33,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Amount" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BSM-xR-08G">
-                                <rect key="frame" x="20" y="88" width="374" height="55"/>
+                                <rect key="frame" x="20" y="108" width="374" height="55"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="wWj-T4-h0W"/>
                                 </constraints>
@@ -44,7 +44,7 @@
                                 </connections>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UYh-Vn-XHx">
-                                <rect key="frame" x="154" y="163" width="240" height="45"/>
+                                <rect key="frame" x="154" y="183" width="240" height="45"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Select Currency" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4gU-Ix-kVx">
                                         <rect key="frame" x="0.0" y="0.0" width="195" height="45"/>
@@ -76,7 +76,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="WCG-le-A10">
-                                <rect key="frame" x="0.0" y="238" width="414" height="624"/>
+                                <rect key="frame" x="0.0" y="258" width="414" height="604"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="YMh-sF-nEK">
                                     <size key="itemSize" width="150" height="70"/>
@@ -93,7 +93,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="150" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6zB-PS-22c">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="6zB-PS-22c">
                                                     <rect key="frame" x="0.0" y="0.0" width="150" height="70"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="I0I-rf-0j1"/>
@@ -135,7 +135,7 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="BSM-xR-08G" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="1ar-HJ-dHg"/>
+                            <constraint firstItem="BSM-xR-08G" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="1ar-HJ-dHg"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="WCG-le-A10" secondAttribute="bottom" id="61U-Bb-yRB"/>
                             <constraint firstItem="WCG-le-A10" firstAttribute="top" secondItem="UYh-Vn-XHx" secondAttribute="bottom" constant="30" id="U4A-Vg-EOX"/>
                             <constraint firstItem="WCG-le-A10" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="iju-6Q-Lu8"/>

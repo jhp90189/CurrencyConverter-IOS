@@ -100,9 +100,16 @@ extension CurrencyViewController: UICollectionViewDataSource, UICollectionViewDe
 
 extension CurrencyViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if Int(textField.text ?? "0") ?? 0 <= 0 { textField.text = "1.00" }
+        if Int(textField.text ?? "0") ?? 0 <= 0 { textField.text = "1" }
         textField.resignFirstResponder()
         return true
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let amount = textField.text else {
+            return true
+        }
+        return (string == "") || (amount.count < 21)
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
