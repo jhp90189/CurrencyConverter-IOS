@@ -10,6 +10,7 @@
 		1829C674255EA8360073DFC1 /* CurrecyListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1829C673255EA8350073DFC1 /* CurrecyListCell.swift */; };
 		1829C676255EB7AA0073DFC1 /* ExchangeRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1829C675255EB7AA0073DFC1 /* ExchangeRate.swift */; };
 		1829C678255EBBF30073DFC1 /* ExchangeRates.json in Resources */ = {isa = PBXBuildFile; fileRef = 1829C677255EBBF30073DFC1 /* ExchangeRates.json */; };
+		1829C67A255EC8BE0073DFC1 /* ExchangeRateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1829C679255EC8BE0073DFC1 /* ExchangeRateCell.swift */; };
 		18803926255D91240031195A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18803925255D91240031195A /* AppDelegate.swift */; };
 		18803928255D91240031195A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18803927255D91240031195A /* SceneDelegate.swift */; };
 		1880392A255D91240031195A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18803929255D91240031195A /* ViewController.swift */; };
@@ -40,6 +41,7 @@
 		1829C673255EA8350073DFC1 /* CurrecyListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrecyListCell.swift; sourceTree = "<group>"; };
 		1829C675255EB7AA0073DFC1 /* ExchangeRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRate.swift; sourceTree = "<group>"; };
 		1829C677255EBBF30073DFC1 /* ExchangeRates.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ExchangeRates.json; sourceTree = "<group>"; };
+		1829C679255EC8BE0073DFC1 /* ExchangeRateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRateCell.swift; sourceTree = "<group>"; };
 		18803922255D91240031195A /* CurrencyConvertor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CurrencyConvertor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18803925255D91240031195A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18803927255D91240031195A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				18803929255D91240031195A /* ViewController.swift */,
 				1896DA07255E7F9500B49EDB /* CurrencyListViewController.swift */,
 				1829C673255EA8350073DFC1 /* CurrecyListCell.swift */,
+				1829C679255EC8BE0073DFC1 /* ExchangeRateCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1829C67A255EC8BE0073DFC1 /* ExchangeRateCell.swift in Sources */,
 				1880392A255D91240031195A /* ViewController.swift in Sources */,
 				18AD00A6255DC67E006325B7 /* CurrencyViewModel.swift in Sources */,
 				18803954255DB45A0031195A /* Currency.swift in Sources */,

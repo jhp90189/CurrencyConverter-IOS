@@ -10,6 +10,7 @@ import UIKit
 
 class CurrencyViewController: UIViewController {
     
+    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var txtAmount: UITextField!
     @IBOutlet weak var vwDropDown: UIView!
     @IBOutlet weak var tableView: UITableView!
@@ -17,6 +18,7 @@ class CurrencyViewController: UIViewController {
     
     private var viewModel = CurrencyViewModel()
     private var selectedCurrency = Currency(shortName: "USD", fullName: "United States Dollar")
+    private var exchangeRates: [ExchangeRate] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,11 +26,19 @@ class CurrencyViewController: UIViewController {
         setupView()
     }
     
+    private func bindViewModel() {
+        viewModel.callApiToFetchExchangeRates()
+        viewModel.bindExchangeRates = { [weak self] rates in
+            self?.exchangeRates = rates
+            self?.collectionView.reloadData()
+        }
+    }
+    
     private func setupView() {
         self.title = "CurrencyConvertor"
         lblSelectedCurrency.layer.borderWidth = 2.0
         lblSelectedCurrency.layer.borderColor = UIColor.black.cgColor
-
+        updateCurrencyUI()
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dropDownClicked))
         tapGesture.numberOfTapsRequired = 1
         vwDropDown.addGestureRecognizer(tapGesture)
@@ -52,6 +62,20 @@ class CurrencyViewController: UIViewController {
                 self?.updateCurrencyUI()
             }
         }
+    }
+}
+
+extension CurrencyViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return exchangeRates.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "exchangecell", for: indexPath) as! ExchangeRateCell
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     }
 }
 

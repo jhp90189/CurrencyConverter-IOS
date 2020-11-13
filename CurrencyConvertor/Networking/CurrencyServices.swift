@@ -64,7 +64,7 @@ class CurrencyServices {
     func fetchExchangeRates(completion: @escaping ((Result<[ExchangeRate]>) -> Void)) {
           if shouldUseStubData {
               do {
-                  if let filePath = Bundle.main.path(forResource: "ExchangeRate", ofType: "json") {
+                  if let filePath = Bundle.main.path(forResource: "ExchangeRates", ofType: "json") {
                       let data = try Data(contentsOf: URL(fileURLWithPath: filePath))
                       let list = getExchangeratesFromResponse(data: data) ?? []
                       completion(.success(list))

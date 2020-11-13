@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -55,28 +56,70 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="azb-UJ-Ibf">
-                                <rect key="frame" x="0.0" y="194" width="414" height="702"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="WCG-le-A10">
+                                <rect key="frame" x="0.0" y="194" width="414" height="668"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            </tableView>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="YMh-sF-nEK">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="exchangecell" id="Mxx-Go-vhH" customClass="ExchangeRateCell" customModule="CurrencyConvertor" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="0.0" width="150" height="150"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="H9M-pU-Ptj">
+                                            <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6zB-PS-22c">
+                                                    <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="6zB-PS-22c" firstAttribute="leading" secondItem="H9M-pU-Ptj" secondAttribute="leading" id="3QQ-9l-gny"/>
+                                                <constraint firstItem="6zB-PS-22c" firstAttribute="top" secondItem="H9M-pU-Ptj" secondAttribute="top" id="5gr-CZ-ICs"/>
+                                                <constraint firstAttribute="trailing" secondItem="6zB-PS-22c" secondAttribute="trailing" id="lG3-am-m8k"/>
+                                                <constraint firstAttribute="bottom" secondItem="6zB-PS-22c" secondAttribute="bottom" id="oyN-El-Ia0"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="150" height="150"/>
+                                        <connections>
+                                            <outlet property="lblExchangeRateText" destination="6zB-PS-22c" id="gM2-1n-ePh"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="sNX-ar-0DU">
+                                        <rect key="frame" x="244" y="0.0" width="150" height="150"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="cah-HE-svn">
+                                            <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="BSM-xR-08G" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="1ar-HJ-dHg"/>
-                            <constraint firstAttribute="bottom" secondItem="azb-UJ-Ibf" secondAttribute="bottom" id="ACn-m4-f0A"/>
-                            <constraint firstItem="azb-UJ-Ibf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="EJp-LR-584"/>
-                            <constraint firstItem="azb-UJ-Ibf" firstAttribute="top" secondItem="UYh-Vn-XHx" secondAttribute="bottom" constant="30" id="Gkx-JY-5zv"/>
-                            <constraint firstItem="azb-UJ-Ibf" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="QNq-GO-1ol"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="WCG-le-A10" secondAttribute="bottom" id="61U-Bb-yRB"/>
+                            <constraint firstItem="WCG-le-A10" firstAttribute="top" secondItem="UYh-Vn-XHx" secondAttribute="bottom" constant="30" id="U4A-Vg-EOX"/>
+                            <constraint firstItem="WCG-le-A10" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="iju-6Q-Lu8"/>
                             <constraint firstItem="BSM-xR-08G" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="oKy-cg-HET"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="UYh-Vn-XHx" secondAttribute="trailing" constant="20" id="qtb-6d-Rou"/>
                             <constraint firstItem="BSM-xR-08G" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" constant="-20" id="rCG-ll-by7"/>
+                            <constraint firstItem="WCG-le-A10" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="tW3-X5-LEp"/>
                             <constraint firstItem="UYh-Vn-XHx" firstAttribute="top" secondItem="BSM-xR-08G" secondAttribute="bottom" constant="20" id="yFO-OX-LMT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="collectionView" destination="WCG-le-A10" id="yVf-7d-j99"/>
                         <outlet property="lblSelectedCurrency" destination="4gU-Ix-kVx" id="NIe-R4-Qhg"/>
-                        <outlet property="tableView" destination="azb-UJ-Ibf" id="kRn-OW-Soc"/>
                         <outlet property="txtAmount" destination="BSM-xR-08G" id="k04-jH-g7d"/>
                         <outlet property="vwDropDown" destination="UYh-Vn-XHx" id="Dxp-Y3-FmN"/>
                         <segue destination="uze-en-lKL" kind="popoverPresentation" identifier="tocurrencylistview" popoverAnchorView="FSR-3d-Xbp" id="Gbf-3b-yzu">
