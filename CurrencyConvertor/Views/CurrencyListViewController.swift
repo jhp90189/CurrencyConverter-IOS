@@ -13,7 +13,7 @@ class CurrencyListViewController: UIViewController {
     private var currencyList: [Currency] = []
     var selectedCurrency : Currency?
     var viewModel: CurrencyViewModel?
-    var currencySelectionCallBack: ((Currency) -> ())? = nil
+    var currencySelectionCallBack: ((Currency?) -> ()) = {_ in}
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,17 +40,19 @@ extension CurrencyListViewController: UITableViewDataSource, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "currency", for: indexPath)
-        cell.textLabel?.textAlignment = .center
-        cell.accessoryType = .checkmark
+        let cell = tableView.dequeueReusableCell(withIdentifier: "currencycell", for: indexPath) as! CurrecyListCell
+        
         cell.selectionStyle = .none
         let currency = currencyList[indexPath.row]
-        cell.textLabel?.text = currency.shortName
+        cell.lblCurrency?.text = currency.shortName
+        cell.isSelected = (selectedCurrency?.shortName == currency.shortName)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
         cell?.isSelected = true
+        selectedCurrency = currencyList[indexPath.row]
+        currencySelectionCallBack(selectedCurrency)
     }
 }

@@ -16,7 +16,7 @@ class CurrencyServices {
     private let baseURL = "https://api.currencylayer.com"
     private let apiKey = "access_key=c4ddd0548cf544a5360392c42fa49bb8"
     private var getListOfCurrencyURL : String {
-        return baseURL + "list?" + apiKey
+        return baseURL + "/list?" + apiKey
     }
     private let shouldUseStubData = true
     //API call to fetch list of employees

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1829C674255EA8360073DFC1 /* CurrecyListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1829C673255EA8350073DFC1 /* CurrecyListCell.swift */; };
 		18803926255D91240031195A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18803925255D91240031195A /* AppDelegate.swift */; };
 		18803928255D91240031195A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18803927255D91240031195A /* SceneDelegate.swift */; };
 		1880392A255D91240031195A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18803929255D91240031195A /* ViewController.swift */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1829C673255EA8350073DFC1 /* CurrecyListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrecyListCell.swift; sourceTree = "<group>"; };
 		18803922255D91240031195A /* CurrencyConvertor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CurrencyConvertor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18803925255D91240031195A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18803927255D91240031195A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 			children = (
 				18803929255D91240031195A /* ViewController.swift */,
 				1896DA07255E7F9500B49EDB /* CurrencyListViewController.swift */,
+				1829C673255EA8350073DFC1 /* CurrecyListCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 				18803954255DB45A0031195A /* Currency.swift in Sources */,
 				1880394D255DA8410031195A /* CurrencyServices.swift in Sources */,
 				1896DA08255E7F9500B49EDB /* CurrencyListViewController.swift in Sources */,
+				1829C674255EA8360073DFC1 /* CurrecyListCell.swift in Sources */,
 				18803926255D91240031195A /* AppDelegate.swift in Sources */,
 				18803928255D91240031195A /* SceneDelegate.swift in Sources */,
 				18803930255D91240031195A /* CurrencyConvertor.xcdatamodeld in Sources */,

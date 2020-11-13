@@ -26,9 +26,9 @@ class CurrencyViewController: UIViewController {
     
     private func setupView() {
         self.title = "CurrencyConvertor"
-        vwDropDown.layer.borderWidth = 2.0
-        vwDropDown.layer.borderColor = UIColor.black.cgColor
-        vwDropDown.layer.cornerRadius = 3.0
+        lblSelectedCurrency.layer.borderWidth = 2.0
+        lblSelectedCurrency.layer.borderColor = UIColor.black.cgColor
+        lblSelectedCurrency.layer.cornerRadius = 3.0
 
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dropDownClicked))
         tapGesture.numberOfTapsRequired = 1
