@@ -75,6 +75,10 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="lblSelectedCurrency" destination="4gU-Ix-kVx" id="NIe-R4-Qhg"/>
+                        <outlet property="tableView" destination="azb-UJ-Ibf" id="kRn-OW-Soc"/>
+                        <outlet property="txtAmount" destination="BSM-xR-08G" id="k04-jH-g7d"/>
+                        <outlet property="vwDropDown" destination="UYh-Vn-XHx" id="Dxp-Y3-FmN"/>
                         <segue destination="uze-en-lKL" kind="popoverPresentation" identifier="tocurrencylistview" popoverAnchorView="FSR-3d-Xbp" id="Gbf-3b-yzu">
                             <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                         </segue>
@@ -91,7 +95,19 @@
                     <view key="view" contentMode="scaleToFill" id="M0C-Y1-im1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sPF-5r-QUr">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="sPF-5r-QUr" firstAttribute="top" secondItem="0C6-V3-fl1" secondAttribute="top" id="4hQ-1m-Mlx"/>
+                            <constraint firstAttribute="bottom" secondItem="sPF-5r-QUr" secondAttribute="bottom" id="RrR-tS-VQ9"/>
+                            <constraint firstItem="sPF-5r-QUr" firstAttribute="leading" secondItem="0C6-V3-fl1" secondAttribute="leading" id="WNO-ft-qxs"/>
+                            <constraint firstItem="sPF-5r-QUr" firstAttribute="trailing" secondItem="0C6-V3-fl1" secondAttribute="trailing" id="vTy-CW-TEh"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="0C6-V3-fl1"/>
                     </view>
                 </viewController>

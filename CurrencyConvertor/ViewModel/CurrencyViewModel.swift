@@ -14,16 +14,15 @@ class CurrencyViewModel: NSObject {
     
     private(set) var currencyList: [Currency] = [] {
         didSet {
-            self.bindCurrencyViewModelToController()
+            self.bindCurrencyList(currencyList)
         }
     }
     
-    var bindCurrencyViewModelToController : (() -> ()) = {}
+    var bindCurrencyList : (([Currency]) -> ()) = { _ in }
 
     
     override init() {
         super.init()
-        callApiToFetchCurrencyList()
     }
     
     func callApiToFetchCurrencyList() {
