@@ -18,6 +18,7 @@ class CurrencyViewController: UIViewController {
     
     private var viewModel = CurrencyViewModel()
     private var selectedCurrency = Currency(shortName: "USD", fullName: "United States Dollar")
+    private var selectedExchangeRate: Double = 1.0
     private var exchangeRates: [ExchangeRate] = []
     
     override func viewDidLoad() {
@@ -50,6 +51,10 @@ class CurrencyViewController: UIViewController {
     
     private func updateCurrencyUI() {
         lblSelectedCurrency.text = selectedCurrency.shortName
+        let exchangeObject = exchangeRates.first { [weak self] rate -> Bool in
+            return (rate.currencyName == self?.selectedCurrency.shortName)
+        }
+        selectedExchangeRate = exchangeObject?.rate ?? 1.0
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -72,10 +77,10 @@ extension CurrencyViewController: UICollectionViewDataSource, UICollectionViewDe
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "exchangecell", for: indexPath) as! ExchangeRateCell
+        let exchangeObject = exchangeRates[indexPath.row]
+        let calculatedRate = (exchangeObject.rate / selectedExchangeRate)
+        cell.lblExchangeRateText.text = "\(calculatedRate) \(exchangeObject.currencyName)"
         return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     }
 }
 
