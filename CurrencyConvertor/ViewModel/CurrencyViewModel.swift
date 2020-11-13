@@ -23,6 +23,7 @@ class CurrencyViewModel: NSObject {
     
     override init() {
         super.init()
+        callApiToFetchCurrencyList()
     }
     
     func callApiToFetchCurrencyList() {

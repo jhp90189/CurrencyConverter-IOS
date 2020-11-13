@@ -10,7 +10,6 @@ import UIKit
 
 class CurrencyViewController: UIViewController {
     private var viewModel = CurrencyViewModel()
-
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
