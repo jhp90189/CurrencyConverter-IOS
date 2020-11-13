@@ -25,6 +25,7 @@ class CurrencyViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         setupView()
+        bindViewModel()
     }
     
     private func bindViewModel() {
@@ -55,6 +56,7 @@ class CurrencyViewController: UIViewController {
             return (rate.currencyName == self?.selectedCurrency.shortName)
         }
         selectedExchangeRate = exchangeObject?.rate ?? 1.0
+        collectionView.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
