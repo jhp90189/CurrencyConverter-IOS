@@ -29,7 +29,7 @@ class CurrencyViewController: UIViewController {
     }
     
     private func bindViewModel() {
-        viewModel.callApiToFetchExchangeRates()
+        viewModel.getLocallyStoredExchangeRate()
         viewModel.bindExchangeRates = { [weak self] rates in
             self?.exchangeRates = rates
             self?.collectionView.reloadData()
