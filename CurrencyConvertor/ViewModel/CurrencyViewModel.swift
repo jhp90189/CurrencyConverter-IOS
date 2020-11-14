@@ -126,11 +126,11 @@ class CurrencyViewModel: NSObject {
     }
     
     private func syncCurrentDateIntoDevice() {
-        UserDefaults.standard.setValue(Date(), forUndefinedKey: exchangeRatesSyncDateKey)
+        UserDefaults.standard.set(Date(), forKey: exchangeRatesSyncDateKey)
     }
     
     private func shouldSyncExchangeRate() -> Bool {
-        guard let lastSyncDate = UserDefaults.standard.value(forKey: exchangeRatesSyncDateKey) as? Date else {
+        guard let lastSyncDate = UserDefaults.standard.object(forKey: exchangeRatesSyncDateKey) as? Date else {
             return true
         }
         let minutes = Calendar.current.dateComponents([.minute], from: lastSyncDate, to: Date()).minute ?? 0
