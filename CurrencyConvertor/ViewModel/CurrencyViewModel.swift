@@ -13,6 +13,8 @@ class CurrencyViewModel: NSObject {
     private let apiService = CurrencyServices()
     private let exchangeRateFileName = "ExchangeRates"
     private let quotesKey = "quotes"
+    private let exchangeRatesSyncDateKey = "syncDate"
+    private let exchangeratesSyncIntervalMinutes = 30
     
     private(set) var currencyList: [Currency] = [] {
         didSet {
@@ -33,7 +35,7 @@ class CurrencyViewModel: NSObject {
     override init() {
         super.init()
         storeInitialExchangeRateDataIfNeeded()
-        callApiToFetchExchangeRates()
+        callApiToFetchExchangeRatesIfNeeded()
     }
     
     func callApiToFetchCurrencyList() {
@@ -49,15 +51,18 @@ class CurrencyViewModel: NSObject {
         }
     }
     
-    func callApiToFetchExchangeRates() {
-        apiService.fetchExchangeRates{ [weak self] result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let data):
-                    self?.storeDownloadedExchangeRates(data: data)
-                    self?.exchangeRates = self?.getExchangeratesFromResponse(data: data) ?? []
-                case .failure(_):
-                    self?.exchangeRates = []
+    func callApiToFetchExchangeRatesIfNeeded() {
+        if shouldSyncExchangeRate() {
+            apiService.fetchExchangeRates{ [weak self] result in
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success(let data):
+                        self?.storeDownloadedExchangeRates(data: data)
+                        self?.exchangeRates = self?.getExchangeratesFromResponse(data: data) ?? []
+                        self?.syncCurrentDateIntoDevice()
+                    case .failure(_):
+                        self?.exchangeRates = []
+                    }
                 }
             }
         }
@@ -118,5 +123,17 @@ class CurrencyViewModel: NSObject {
     
     private func pathForCacheDirectory() -> String? {
         NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true).first
+    }
+    
+    private func syncCurrentDateIntoDevice() {
+        UserDefaults.standard.setValue(Date(), forUndefinedKey: exchangeRatesSyncDateKey)
+    }
+    
+    private func shouldSyncExchangeRate() -> Bool {
+        guard let lastSyncDate = UserDefaults.standard.value(forKey: exchangeRatesSyncDateKey) as? Date else {
+            return true
+        }
+        let minutes = Calendar.current.dateComponents([.minute], from: lastSyncDate, to: Date()).minute ?? 0
+        return (minutes >= exchangeratesSyncIntervalMinutes)
     }
 }
