@@ -29,17 +29,17 @@ class CurrencyViewController: UIViewController {
     }
     
     private func bindViewModel() {
-        viewModel.getLocallyStoredExchangeRate()
         viewModel.bindExchangeRates = { [weak self] rates in
             self?.exchangeRates = rates
             self?.collectionView.reloadData()
         }
+        viewModel.getLocallyStoredExchangeRate()
     }
     
     private func setupView() {
         self.title = "CurrencyConvertor"
-        lblSelectedCurrency.layer.borderWidth = 2.0
-        lblSelectedCurrency.layer.borderColor = UIColor.black.cgColor
+        vwDropDown.layer.borderWidth = 2.0
+        vwDropDown.layer.borderColor = UIColor.black.cgColor
         updateCurrencyUI()
         // Tap gesture for drop down click
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dropDownClicked))

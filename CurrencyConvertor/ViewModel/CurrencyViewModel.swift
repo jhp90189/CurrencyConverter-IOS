@@ -113,7 +113,7 @@ class CurrencyViewModel: NSObject {
     
     private func getExchangeRateFilePath() -> String {
         guard let cacheDirectory = pathForCacheDirectory() else { return "" }
-        return (cacheDirectory + "\(exchangeRateFileName).json)")
+        return (cacheDirectory + "/\(exchangeRateFileName).json")
     }
     
     private func pathForCacheDirectory() -> String? {
