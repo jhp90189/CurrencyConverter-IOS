@@ -23,7 +23,7 @@ class CurrencyServices {
     private var getExchangeRatesURL : String {
         return baseURL + "/live?" + apiKey
     }
-    private let shouldUseStubData = true
+    private let shouldUseStubData = false
     
     //API call to fetch list of employees
     func fetchCurrencyList(completion: @escaping ((Result<[Currency]>) -> Void)) {

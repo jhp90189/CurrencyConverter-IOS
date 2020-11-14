@@ -12,6 +12,7 @@ class CurrencyListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     private var currencyList: [Currency] = []
     var selectedCurrency : Currency?
     var viewModel: CurrencyViewModel?
@@ -29,8 +30,10 @@ class CurrencyListViewController: UIViewController {
     }
     
     private func observeModel() {
+        activityIndicator.startAnimating()
         viewModel?.callApiToFetchCurrencyList()
         viewModel?.bindCurrencyList = { [weak self] list in
+            self?.activityIndicator.stopAnimating()
             self?.currencyList = list
             self?.tableView.reloadData()
         }

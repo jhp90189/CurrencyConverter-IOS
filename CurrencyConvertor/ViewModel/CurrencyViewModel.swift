@@ -39,13 +39,17 @@ class CurrencyViewModel: NSObject {
     }
     
     func callApiToFetchCurrencyList() {
-        apiService.fetchCurrencyList { [weak self] result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let response):
-                    self?.currencyList = response
-                case .failure(_):
-                    self?.currencyList = []
+        if currencyList.count > 0 {
+            bindCurrencyList(currencyList)
+        } else {
+            apiService.fetchCurrencyList { [weak self] result in
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success(let response):
+                        self?.currencyList = response
+                    case .failure(_):
+                        break
+                    }
                 }
             }
         }
@@ -61,7 +65,7 @@ class CurrencyViewModel: NSObject {
                         self?.exchangeRates = self?.getExchangeratesFromResponse(data: data) ?? []
                         self?.syncCurrentDateIntoDevice()
                     case .failure(_):
-                        self?.exchangeRates = []
+                        break
                     }
                 }
             }
