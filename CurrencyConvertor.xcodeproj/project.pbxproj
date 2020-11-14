@@ -15,7 +15,6 @@
 		18803928255D91240031195A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18803927255D91240031195A /* SceneDelegate.swift */; };
 		1880392A255D91240031195A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18803929255D91240031195A /* ViewController.swift */; };
 		1880392D255D91240031195A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1880392B255D91240031195A /* Main.storyboard */; };
-		18803930255D91240031195A /* CurrencyConvertor.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1880392E255D91240031195A /* CurrencyConvertor.xcdatamodeld */; };
 		18803932255D91290031195A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18803931255D91290031195A /* Assets.xcassets */; };
 		18803935255D91290031195A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18803933255D91290031195A /* LaunchScreen.storyboard */; };
 		18803940255D912A0031195A /* CurrencyConvertorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1880393F255D912A0031195A /* CurrencyConvertorTests.swift */; };
@@ -47,7 +46,6 @@
 		18803927255D91240031195A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		18803929255D91240031195A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1880392C255D91240031195A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		1880392F255D91240031195A /* CurrencyConvertor.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CurrencyConvertor.xcdatamodel; sourceTree = "<group>"; };
 		18803931255D91290031195A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18803934255D91290031195A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		18803936255D91290031195A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -111,7 +109,6 @@
 				18803931255D91290031195A /* Assets.xcassets */,
 				18803933255D91290031195A /* LaunchScreen.storyboard */,
 				18803936255D91290031195A /* Info.plist */,
-				1880392E255D91240031195A /* CurrencyConvertor.xcdatamodeld */,
 			);
 			path = CurrencyConvertor;
 			sourceTree = "<group>";
@@ -284,7 +281,6 @@
 				1829C674255EA8360073DFC1 /* CurrecyListCell.swift in Sources */,
 				18803926255D91240031195A /* AppDelegate.swift in Sources */,
 				18803928255D91240031195A /* SceneDelegate.swift in Sources */,
-				18803930255D91240031195A /* CurrencyConvertor.xcdatamodeld in Sources */,
 				1829C676255EB7AA0073DFC1 /* ExchangeRate.swift in Sources */,
 				1880394E255DA8410031195A /* APIClient.swift in Sources */,
 			);
@@ -549,19 +545,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		1880392E255D91240031195A /* CurrencyConvertor.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				1880392F255D91240031195A /* CurrencyConvertor.xcdatamodel */,
-			);
-			currentVersion = 1880392F255D91240031195A /* CurrencyConvertor.xcdatamodel */;
-			path = CurrencyConvertor.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 1880391A255D91240031195A /* Project object */;
 }

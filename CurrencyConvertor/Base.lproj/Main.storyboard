@@ -177,7 +177,13 @@
                                     <constraint firstAttribute="height" constant="44" id="VRw-Xy-mps"/>
                                 </constraints>
                                 <items>
-                                    <navigationItem title="Select Currency" id="bVb-Ia-yFo"/>
+                                    <navigationItem title="Select Currency" id="bVb-Ia-yFo">
+                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="IRD-GF-c8K">
+                                            <connections>
+                                                <action selector="btnCancelTapped:" destination="uze-en-lKL" id="EhG-XI-IxO"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sPF-5r-QUr">

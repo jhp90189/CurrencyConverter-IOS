@@ -23,31 +23,34 @@ class CurrencyServices {
     private var getExchangeRatesURL : String {
         return baseURL + "/live?" + apiKey
     }
-    private let shouldUseStubData = false
     
     //API call to fetch list of employees
     func fetchCurrencyList(completion: @escaping ((Result<[Currency]>) -> Void)) {
-        if shouldUseStubData {
-            do {
-                if let filePath = Bundle.main.path(forResource: currencyListLocalFileName, ofType: "json") {
-                    let data = try Data(contentsOf: URL(fileURLWithPath: filePath))
-                    let list = getCurrenciesFromResponse(data: data) ?? []
-                    completion(.success(list))
-                }
-            } catch {}
-        } else {
-            guard let listURL = URL(string: getListOfCurrencyURL) else { return }
-            let resourse = Resource(url: listURL)
-            apiClient.load(resourse) { result in
-                switch result {
-                case .success(let data):
-                    let items = self.getCurrenciesFromResponse(data: data) ?? []
-                    completion(.success(items))
-                case .failure(let error):
+        guard let listURL = URL(string: getListOfCurrencyURL) else { return }
+        let resourse = Resource(url: listURL)
+        apiClient.load(resourse) { [weak self] result in
+            switch result {
+            case .success(let data):
+                let items = self?.getCurrenciesFromResponse(data: data) ?? []
+                completion(.success(items))
+            case .failure(let error):
+                if let localList = self?.getStubbedCurrencyList() {
+                    completion(.success(localList))
+                } else {
                     completion(.failure(error))
                 }
             }
         }
+    }
+    
+    private func getStubbedCurrencyList() -> [Currency]? {
+        do {
+            if let filePath = Bundle.main.path(forResource: currencyListLocalFileName, ofType: "json") {
+                let data = try Data(contentsOf: URL(fileURLWithPath: filePath))
+                return getCurrenciesFromResponse(data: data) ?? []
+            }
+            return nil
+        } catch { return nil }
     }
     
     private func getCurrenciesFromResponse(data: Data) -> [Currency]? {

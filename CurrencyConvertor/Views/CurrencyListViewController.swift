@@ -25,18 +25,22 @@ class CurrencyListViewController: UIViewController {
         observeModel()
     }
     
+    @IBAction func btnCancelTapped(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     private func setupView() {
         self.title = "Select Currency"
     }
     
     private func observeModel() {
         activityIndicator.startAnimating()
-        viewModel?.callApiToFetchCurrencyList()
         viewModel?.bindCurrencyList = { [weak self] list in
             self?.activityIndicator.stopAnimating()
             self?.currencyList = list
             self?.tableView.reloadData()
         }
+        viewModel?.callApiToFetchCurrencyList()
     }
 }
 
